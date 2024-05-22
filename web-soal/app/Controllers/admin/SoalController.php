@@ -16,7 +16,7 @@ class SoalController extends BaseController
     }
     public function index()
     {
-        $soal = $this->soalModel->orderBy('id', 'DESC')->findAll();
+        $soal = $this->soalModel->orderBy('id', 'ASC')->findAll();
 
         $data = [
             'title' => 'Data Soal',
