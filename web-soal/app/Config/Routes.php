@@ -6,8 +6,10 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Admin\AuthController::index');
+$routes->post('auth', 'Admin\AuthController::auth');
+$routes->get('logout', 'Admin\AuthController::logout');
 
-$routes->group('admin', function ($routes) {
+$routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('soal', 'Admin\SoalController::index');
     $routes->post('soal/store', 'Admin\SoalController::store');
     $routes->post('soal/update/(:num)', 'Admin\SoalController::update/$1');
